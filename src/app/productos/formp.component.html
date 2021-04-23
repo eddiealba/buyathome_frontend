@@ -1,0 +1,106 @@
+<div class="card bg-dark text-white">
+    
+    <div class="card-body">
+        <form (ngSubmit) = "create()" >
+            <div class="form-group row">
+                <label for="brandId" class="col-form-label col-sm-2">ID de Marca</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.brandId" name="brandId">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="productName" class="col-form-label col-sm-2">Nombre del Producto</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.productName" name="productName" required #productName="ngModel">
+                    <div class="alert alert-danger" *ngIf="productName.invalid && (productName.dirty || productName.touched)">
+                        <div>
+                            EL Nombre del Producto es requerido
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="tagId" class="col-form-label col-sm-2">ID de Tag</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.tagId" name="tagId">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="detail" class="col-form-label col-sm-2">Detalle</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.detail" name="detail">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="model" class="col-form-label col-sm-2">Modelo</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.model" name="model">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="price" class="col-form-label col-sm-2">Precio</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.price" name="price" required #price="ngModel">
+                    <div class="alert alert-danger" *ngIf="price.invalid && (price.dirty || price.touched)">
+                        <div>
+                            EL precio es requerido
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="stock" class="col-form-label col-sm-2">Stock</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.stock" name="stock" required #stock="ngModel">
+                    <div class="alert alert-danger" *ngIf="stock.invalid && (stock.dirty || stock.touched)">
+                        <div>
+                            EL Stock es requerido
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="description" class="col-form-label col-sm-2">Descripcion</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.description" name="description">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="storeAvailable" class="col-form-label col-sm-2">Disponible en tienda</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.storeAvailable" name="storeAvailable">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="deliveryAvailable" class="col-form-label col-sm-2">Disponible para delivery</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.deliveryAvailable" name="deliveryAvailable">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="paymentId" class="col-form-label col-sm-2">Imagen</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" [(ngModel)]="producto.image" name="image">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button">Crear</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>

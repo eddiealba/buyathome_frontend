@@ -1,0 +1,7 @@
+.dropdown:hover>.dropdown-menu {
+    display: block;
+  }
+
+* {
+  font-size: 2px;
+}

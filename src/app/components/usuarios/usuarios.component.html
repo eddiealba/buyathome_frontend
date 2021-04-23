@@ -1,0 +1,58 @@
+<app-navbaradmin></app-navbaradmin>
+<div class="card border-primary mb-3" >
+
+    <div class="card-body text-primary">
+        <h5 class="card-title">Listado de usuarios</h5>
+        <div class="my-2 text-left">
+            <button class="btn btn-rounded btn-primary" type="button" [routerLink] = "['/usuarios/form']">Crear Usuario</button>
+        </div> 
+    
+        <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>id</th>
+                
+                <th>usuario</th>
+               
+                <th>estado</th>
+                <th>nombres</th>
+                <th>apellidos</th>
+                <th>email</th>
+                <th>ci</th>
+                <th>telefono</th>
+                <th>
+                    editar
+                </th>
+                <th>
+                    eliminar
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios">
+                <td>{{ usuario.idUsuario }}</td>
+                <td>{{ usuario.username }}</td>
+                <td>{{ usuario.estado }}</td>
+                <td>{{ usuario.nombres }}</td>
+                <td>{{ usuario.apellidos }}</td>
+                <td>{{ usuario.email}}</td>
+                <td>{{ usuario.ci }}</td>
+                <td>{{ usuario.telefono }}</td>
+                
+                <td>
+                    <button type="button" name="editar" [routerLink]="['/usuarios/formedit', usuario.idUsuario]" class="btn btn-primary">editar</button>
+                </td>
+                <td>
+                    <button type="button" name="eliminar" (click)='delete(usuario)' class="btn btn-danger btn-sm">eliminar</button>
+                </td>
+
+            </tr>
+
+        </tbody>
+        </table>
+
+
+
+    </div>
+</div> 

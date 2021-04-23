@@ -1,0 +1,47 @@
+<div class="jumbotron">
+    
+    <h1 class="display-4 animated fadeIn fast">Agregar Producto</h1>
+    <br>
+    <br>
+    <br>
+    
+    <form (ngSubmit)="createOrder( ord )" #ord="ngForm">
+        <div class="form-row animated fadeIn fast">
+            <div class="form-group col-md-3">
+                <label for="inputBrand">Direccion ID</label>
+                <input type="text" class="form-control" placeholder="Id de la direccion del usuario" name="addressId" ngModel required #addressId="ngModel">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputTag">ID de Usuario</label>
+                <input type="text" class="form-control" placeholder="Id del usuario" name="userId" ngModel required #userId="ngModel">
+            </div>  
+            <div class="form-group col-md-3">
+                <label for="inputTag">ID de Carrito</label>
+                <input type="text" class="form-control" placeholder="Id del carrito de compras" name="cartId" ngModel required #cartId="ngModel">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputTag">ID de Delivery</label>
+                <input type="text" class="form-control" placeholder="Id del delivery" name="deliveryId" ngModel required #deliveryId="ngModel">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputTag">Fecha de Orden</label>
+                    <input type="text" class="form-control" placeholder="Fecha de Orden" name="date" ngModel required #date="ngModel">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputTag">Status de la Orden</label>
+                <input type="text" class="form-control" placeholder="Estado de la orden" name="status" ngModel required #status="ngModel">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="inputTag">State</label>
+                <input type="text" class="form-control" placeholder="State" name="state" ngModel required #state="ngModel">
+            </div>
+                
+        </div>
+            
+        <div class="mt-5 text-right">
+            <button class="btn btn-primary profile-button" type="submit">Agregar producto</button>
+            <button class="btn btn-primary profile-button" type="button" [routerLink]="['**']">Cancelar</button>
+        </div>
+  </form>
+
+</div>

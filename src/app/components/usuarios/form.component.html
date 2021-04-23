@@ -1,0 +1,96 @@
+<app-navbaradmin></app-navbaradmin>
+<div class="card bg-dark text-white">
+    
+    <div class="card-body">
+        <form (ngSubmit) = "create()" >
+            
+        
+              <div class="form-group row">
+                <label for="usuario" class="col-form-label col-sm-2">Usuario</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" [(ngModel)]="usuario.username" name="usuario"ngModel #usua="ngModel"
+                [class.is-invalid]="usua.invalid && usua.touched"
+                minlength="1"
+                pattern=".*\S+.*"
+                required >
+            <small class="form-text text-danger" *ngIf="usua.invalid && usua.touched">El campo es obligatorio</small>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="password" class="col-form-label col-sm-2">password</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" [(ngModel)]="usuario.password" name="password" ngModel #password="ngModel"
+                  [class.is-invalid]="password.invalid && password.touched"
+                  minlength="8"
+                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                  required >
+                  <small class="form-text text-danger" *ngIf="password.invalid && password.touched">La contraseña debe tener un minimo de 8 caracteres, un numero, una mayuscula </small>
+              
+                </div>
+              </div>
+        
+              <div class="form-group row">
+                <label for="estado" class="col-form-label col-sm-2">estado</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" [(ngModel)]="usuario.estado" name="estado" required #estado="ngModel"ngModel 
+                  [class.is-invalid]="estado.invalid && estado.touched"
+                  minlength="1"
+                  pattern=".*\S+.*"
+                  required >
+              <small class="form-text text-danger" *ngIf="estado.invalid && estado.touched">El campo es obligatorio</small>
+            </div>
+              </div>
+        
+              <div class="form-group row">
+                <label for="nombres" class="col-form-label col-sm-2">Nombres</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" [(ngModel)]="usuario.nombres" name="nombres">
+                </div>
+              </div>
+        
+              <div class="form-group row">
+                <label for="apellidos" class="col-form-label col-sm-2">Apellidos</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" [(ngModel)]="usuario.apellidos" name="apellidos">
+                </div>
+              </div>
+        
+              <div class="form-group row">
+                <label for="email" class="col-form-label col-sm-2">Email</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" [(ngModel)]="usuario.email" name="Email" ngModel #correo="ngModel"
+                  [class.is-invalid]="correo.invalid && correo.touched"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}$"
+                  minlength="1"
+                  required >
+                  <small class="form-text text-danger" *ngIf="correo.invalid && correo.touched">Ingrese un correo valido</small> 
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="ci" class="col-form-label col-sm-2">CI</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" [(ngModel)]="usuario.ci" name="ci">
+                </div>
+              </div>
+        
+              <div class="form-group row">
+                <label for="telefono" class="col-form-label col-sm-2">Telefono</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" [(ngModel)]="usuario.telefono" name="telefono">
+                </div>
+              </div>
+        
+              
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-primary" role="button">Crear</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>

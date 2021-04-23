@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+<div class="container main-container animated fadeIn">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-4" style="font-size: 15px;">
+                    <h2><b>Historial de Pedidos</b></h2>
+                </div>
+            </div>
+        </div>
+        
+        <table class="table table-responsive table-striped table-hover" style="font-size: 14px;">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Producto</th>
+                    <th>Direccion</th>
+                    <th>Fecha de Pedido</th>						
+                    <th>Estado</th>						
+                    <th>Total</th>
+                    <th>Detalle</th>
+                    <th>Repetir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of order; let i = index">
+                    <td>{{i+1}}</td>
+                    <td># de Identificacion: {{order.orderId}}</td>
+                    <td>{{order.neighbour}}, {{order.street}} #{{order.number}}</td>
+                    <td>{{order.date | date: 'dd/MM/yyyy'}}</td>                        
+                    <td *ngIf="order.state === 0"><span class="status text-cancel">&bull;</span> Cancelado</td>
+                    <td *ngIf="order.state === 1"><span class="status text-recibed">&bull;</span> Recibido</td>
+                    <td *ngIf="order.state === 2"><span class="status text-preparing">&bull;</span> Preparando</td>
+                    <td *ngIf="order.state === 3"><span class="status text-onMyWay">&bull;</span> En camino</td>
+                    <td *ngIf="order.state === 4"><span class="status text-delivered">&bull;</span> Entregado</td>
+                    <td>{{order.total}} Bs.</td>
+                    <td><a class="view" title="View Details" *ngFor="let user of user" data-toggle="tooltip"  [routerLink]="['../orders',order.orderId]" >
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
+                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                            <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                        </svg>
+                    </a></td>
+                    <td><a class="view" title="View Details" data-toggle="tooltip" [routerLink]="['../../orders']" >
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-counterclockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
+                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                        </svg>
+                    </a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr>
+            <a class="btn btn-warning" data-abc="true" [routerLink]="['../profile']" > Volver al Perfil</a>
+</div>

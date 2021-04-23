@@ -1,0 +1,56 @@
+<div class="container main-container">
+<div class="jumbotron responsive" *ngFor="let product of product">
+    
+    <h1 class="display-4 animated fadeIn fast">Editar : {{product.productName}}</h1>
+    
+    <form (ngSubmit)="updateProduct('', prod )" #prod="ngForm">
+       
+        <div class="avata">
+            <img src={{product.image}}/>
+        </div>
+                
+        <div class="form-row animated fadeIn fast">
+            <div class="form-group col-md-6">
+                <label for="inputPrice">Precio</label>
+                <input type="number" placeholder={{product.price}} class="form-control" name="price" ngModel required #price="ngModel">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputStock">Stock</label>
+                <input type="number" placeholder={{product.stock}} class="form-control" name="stock" ngModel required #stock="ngModel">
+            </div>
+        </div>
+        <div class="form-row animated fadeIn fast">
+            <div class="form-group col-md-6">
+                <label>Disponible en Tienda: </label>
+                <div >
+                    <input type="radio" name="inputStoreAvailable" value=true name="storeAvailable" ngModel required #storeAvailable="ngModel"  />
+                    <label htmlFor="acti">Disponible</label>
+                </div>  
+                <div  >
+                    <input type="radio" name="inputStoreAvailable" value=false name="storeAvailable" ngModel required #storeAvailable="ngModel" />
+                    <label htmlFor="inac">No Disponible</label>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Disponible para Delivery: </label>
+                <div  >
+                    <input type="radio" name="inputDeliveryAvailable" value=true  name="deliveryAvailable" ngModel required #deliveryAvailable="ngModel"  />
+                    <label htmlFor="acti">Disponible</label>
+                </div>
+                <div  >
+                    <input type="radio" name="inputDeliveryAvailable" value=false name="deliveryAvailable" ngModel required #deliveryAvailable="ngModel" />
+                    <label htmlFor="inac">No Disponible</label>
+                </div>
+            </div>
+                
+        </div>
+            
+        <div class="mt-5 text-right">
+            <button class="btn btn-primary profile-button" type="submit">Realizar Cambios</button>
+            <button class="btn btn-primary profile-button" type="button" [routerLink]="['**']">Cancelar</button>
+        </div>
+  </form>
+
+</div>
+</div>
+<simple-notifications></simple-notifications>

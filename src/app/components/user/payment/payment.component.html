@@ -1,0 +1,59 @@
+<br>
+<h1 class="display-4 animated fadeIn fast">Ingresar metodo de Pago</h1>
+<br>
+<br>
+<form (ngSubmit)="createPayment( paym )" #paym="ngForm">
+    <div class="panel panel-default" >
+     <div class="panel-heading">
+        <div class="row ">
+            <div class="col-md-12">
+                <input type="text" class="form-control" placeholder="Nombres" name="fisrtname" ngModel required #fisrtname="ngModel">
+            </div>
+        </div>
+        <br>
+        <div class="row ">
+            <div class="col-md-12">
+                <input type="text" class="form-control" placeholder="Apellidos" name="lastname" ngModel required #lastname="ngModel">
+            </div>
+        </div> 
+        <br>
+          <div class="row ">
+                  <div class="col-md-12">
+                    <input type="text" class="form-control" placeholder="Numero de tarjeta" name="cardNumber" ngModel required #cardNumber="ngModel">
+                  </div>
+            <br>
+            <br>
+            <br>
+            
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                      <span class="help-block text-muted small-font" ></span>
+                      <input type="text" class="form-control" placeholder="Codigo de Seguridad (CVV)" name="securityCode" ngModel required #securityCode="ngModel">
+                  </div>
+            
+             <div class="col-md-3 col-sm-3 col-xs-3">
+    <img src="https://www.mejorestarjetasdecredito.es/wp-content/uploads/visa.jpg" />
+             </div>
+              </div>
+              <br>
+         <div class="row ">
+                  <div class="col-md-12 pad-adjust">
+                    <input type="text" class="form-control" placeholder="Fecha de vencimiento" name="dateExpire" ngModel required #dateExpire="ngModel">
+                  </div>
+              </div>
+         <div class="row">
+    <div class="col-md-12 pad-adjust">
+        <div class="checkbox">
+        <label>
+
+        </label>
+      </div>
+    </div>
+         </div>
+           <div class="mt-5 text-right">
+            <button class="btn btn-primary profile-button" type="submit">Agregar producto</button><br><br>
+            <button class="btn btn-primary profile-button" type="button" [routerLink]="['**']">Cancelar</button>
+        </div>
+         
+                       </div>
+                  </div>
+    </form>

@@ -1,0 +1,106 @@
+<div class="col-sm-12 col-md-12 col-lg-12" *ngFor="let product of product">
+
+    <div class="product-content product-wrap clearfix product-deatil">
+        <div class="row">
+            <div class="col-md-5 col-sm-12 col-xs-12">
+                <div class="product-image">
+                    <div id="myCarousel-2" class="carousel slide">
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel-2" data-slide-to="0" class=""></li>
+                            <li data-target="#myCarousel-2" data-slide-to="1" class="active"></li>
+                            <li data-target="#myCarousel-2" data-slide-to="2" class=""></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="{{product.image}}" class="card-img-top" alt="" />
+                            </div>
+                        </div>
+                        <a class="left carousel-control" href="#myCarousel-2" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a>
+                        <a class="right carousel-control" href="#myCarousel-2" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a>
+                    </div>
+                </div>
+            </div>
+            <form autocomplete="off" class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12" (ngSubmit)="addToCart('',toCart)" #toCart="ngForm">
+                <div class=" col-md-offset-1 col-sm-12 col-xs-12">
+                    <h2 class="name">
+                        {{product.productName}}
+                        <small>Producto hecho por <a href="javascript:void(0);">{{product.brand}}</a></small>
+                    </h2>
+                    <hr />
+    
+                    <div class="description description-tabs">
+                        
+                        <div class="col-md-offset-1 col-sm-12 col-xs-12" id="more-information">
+                            <br />
+                            <dt>Descripcion</dt>
+                            <p>
+                                {{product.description}}
+                            </p>
+                        </div>
+                        <div class="col-md-offset-1 col-sm-12 col-xs-12" id="specifications">
+                            <br />
+                            <dl class="">
+                                <dt>Categoria</dt>
+                                <span class="badge badge-pill badge-dark">{{product.category}}</span>
+                                <br />
+    
+                                <dt>Modelo</dt>
+                                <dd>{{product.model}}</dd>
+                                <br />
+    
+                                <dt>Detalle</dt>
+                                <dd>{{product.detail}}</dd>
+                                <br />
+    
+                                <dt>Cantidad</dt>
+                                <select id="inputQtty" name="qtty" ngModel #qtty="ngModel">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </dl>
+                        </div>
+                    </div>
+                    <hr />
+    
+                    <h3 class="price-container">
+                        Bs. {{product.price}}
+                    </h3>
+                    <div class="certified">
+                        <ul>
+                            <li *ngIf="product.storeAvailable">
+                                <a>Disponible en tienda<span>Disponible</span></a>
+                            </li>
+                            <li *ngIf="!product.storeAvailable">
+                                <a>Disponible en tienda<span>No disponible</span></a>
+                            </li>
+                            <li *ngIf="product.deliveryAvailable">
+                                <a >Disponible en linea<span>Disponible</span></a>
+                            </li>
+                            <li *ngIf="!product.deliveryAvailable">
+                                <a >Disponible en linea<span>No disponible</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr />
+                    
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <button id="myInput" type="submit" class="btn btn-success btn-lg">Agregar al carrito (Bs.{{product.price}})</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<simple-notifications></simple-notifications>

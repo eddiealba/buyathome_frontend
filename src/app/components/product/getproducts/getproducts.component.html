@@ -1,0 +1,42 @@
+<div class="container main-container">
+<div class="jumbotron responsive" >
+    
+    
+    <div class="table-responsive shopping-cart" >
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>PRODUCTOS</th>
+                    <th class="text-center">Categoria</th>
+                    <th class="text-center">Marca  </th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let product of product">
+                <tr>
+                    <td>
+                        <div class="product-item">
+                            <a class="product-thumb" ><img src="{{product.image}}" alt="Product"></a>
+                            <div class="product-info">
+                                <h4 class="product-title"><a [routerLink]="['/product/editproduct',product.productId]">{{product.description}}</a></h4><span><em>Precio:</em> Bs. {{product.price}}</span><span><em>Stock:</em> {{product.stock}}</span>
+                            </div>
+                        </div>
+                    </td>
+            
+                    <td class="text-center text-lg text-medium">{{product.category}}</td>
+                    <td class="text-center text-lg text-medium">{{product.brand}}</td>
+                    <td>
+                
+                        <button class="btn btn-primary profile-button" type="button" [routerLink]="['/product/editproduct',product.productId]">
+                            
+                            Editar
+                        </button>
+                    </td>
+                    <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="" data-original-title="Remove item"><i class="fa fa-trash"></i></a></td>
+                </tr>
+       
+             </tbody>
+        </table>
+    </div>
+
+</div>
+</div>
