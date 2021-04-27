@@ -1,3 +1,4 @@
+import { AuthService } from './../usuarios/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {Cliente} from './cliente';
 import { ClienteService } from './cliente.service';
@@ -13,7 +14,7 @@ export class ClientesComponent implements OnInit {
 
   clientes!: Cliente[];
 
-  constructor(private clienteService: ClienteService) { }
+  constructor(private clienteService: ClienteService, public authService: AuthService) { }
 
   ngOnInit(): void {
     this.clienteService.getClientes().subscribe(

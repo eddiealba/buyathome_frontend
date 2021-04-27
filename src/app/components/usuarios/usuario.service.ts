@@ -27,10 +27,21 @@ export class UsuarioService {
     } 
 
     private isNoAutorizado(e: { status: number; }): boolean{
-        if(e.status==401 || e.status==403){
+        if(e.status==401){
+
+            if(this.authService.isAuthenticated()){
+                this.authService.logout();
+              } 
+              
             this.router.navigate(['/loginadmin'])
             return true;
         }
+    
+        if(e.status==403){
+          swal.fire('Acceso denegado', `Usuario ${this.authService.usuario.username} no tiene acceso`, 'warning');
+          this.router.navigate(['/homeadmin'])
+          return true;
+      }
         return false;
     }
 
