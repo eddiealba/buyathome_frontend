@@ -8,4 +8,5 @@ export class Usuario {
     email!: string;
     ci!:string;
     telefono !: string;
+    roles:string[]= [];
 }

@@ -1,73 +1,22 @@
-<form class="login-form">
-    <p class="login-text">
-      <span class="fa-stack fa-lg">
-        <i class="fa fa-circle fa-stack-2x"></i>
-        <i class="fa fa-lock fa-stack-1x"></i>
-      </span>
-    </p>
-    <input type="email" class="login-username" autofocus="true" required="true" placeholder="Email" />
-    <input type="password" class="login-password" required="true" placeholder="Password" />
-    <a class="nav-link" [routerLink]="['../homeadmin']" >
-      <div>
-        <ng-template #contenido let-modal>
-            <div class="modal-header">
-                <h4 class="modal-title">Alerta</h4>
-                <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+<div class="card border-primary text-center col-sm-6" >
+    <div class="card-header">{{titulo}}</div>   
+    <div class="card-body">
+
+        <form method="post">
+            <div class="form-group col-sm-6">
+                <input [(ngModel)]="usuario.username" type="text" class="form-control" name="username" id="username" placeholder="Username" autofocus required>
             </div>
-            <div class="modal-body">
-                <h5>Inicio De Sesion Exitoso !!!!</h5>
+
+            <div class="form-group col-sm-6">
+                <input [(ngModel)]="usuario.password" type="password" class="form-control" name="password" id="password" placeholder="Password" required>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" (click)="modal.close()">Ok!</button>
+
+            <div class="form-group col-sm-6">
+                <input (click)='login()' type="submit" class="btn btn-lg btn-primary btn-block" value="Login">
             </div>
-        </ng-template>
-        
-        <button type="button" class="btn btn-outline-danger" (click)="openSM(contenido)">Administrador</button>
-        </div>
-    </a>
-    <a class="nav-link" [routerLink]="['../homeencargadoenvios']" >
-      <div>
-        <ng-template #contenido let-modal>
-            <div class="modal-header">
-                <h4 class="modal-title">Alerta</h4>
-                <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h5>Inicio De Sesion Exitoso !!!!</h5>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" (click)="modal.close()">Ok!</button>
-            </div>
-        </ng-template>
-        
-        <button type="button" class="btn btn-outline-danger" (click)="openSM(contenido)">Envios</button>
-        </div>
-    </a>
-    <a class="nav-link" [routerLink]="['../homepersonalventas']" >
-      <div>
-        <ng-template #contenido let-modal>
-            <div class="modal-header">
-                <h4 class="modal-title">Alerta</h4>
-                <button class="close" aria-label="close" type="button" (click)="modal.dismiss()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <h5>Inicio De Sesion Exitoso !!!!</h5>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" (click)="modal.close()">Ok!</button>
-            </div>
-        </ng-template>
-        
-        <button type="button" class="btn btn-outline-danger" (click)="openSM(contenido)">Ventas</button>
-        </div>
-    </a>
-  </form>
-  <a  class="login-forgot-pass">forgot password?</a>
-  <div class="underlay-photo"></div>
-  <div class="underlay-black"></div> 
+
+        </form>
+
+    </div>
+
+</div>
