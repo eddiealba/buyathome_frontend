@@ -1,0 +1,21 @@
+<ul class="pagination" style="overflow:scroll;">
+    <li class="page-item" *ngIf="paginadorp.number > 0">
+        <a class="page-link" [routerLink]="['/productos/page', paginadorp.number-1]">&laquo;</a>
+    </li>
+    
+    <li [ngClass]="paginadorp.first?'disabled page-item':'page-item'">
+        <a class="page-link" [routerLink]="['/productos/page', 0]">Primera</a>
+    </li>
+    
+    <li class="page-item" *ngFor="let paginap of paginasp" [ngClass]="paginap-1 == paginadorp.number?'active':''">
+        <a class="page-link" [routerLink]="['/productos/page', paginap-1]">{{paginap}}</a>
+    </li>
+    
+    <li [ngClass]="paginadorp.last?'disabled page-item':'page-item'">
+        <a class="page-link" [routerLink]="['/productos/page', paginadorp.totalPages-1]">Ultima</a>
+    </li>
+
+    <li class="page-item" *ngIf="paginadorp.number < paginadorp.totalPages-1">
+        <a class="page-link" [routerLink]="['/productos/page', paginadorp.number+1]">&raquo;</a>
+    </li>
+</ul>

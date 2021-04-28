@@ -1,3 +1,5 @@
+<app-navbaradmin></app-navbaradmin>
+
 <div >
     <div class="card-header" >Productos</div>
         <div class="card-body text-primary">
@@ -11,14 +13,12 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>ID Marca</th>
+                   
                     <th>Nombre</th>
-                    <th>ID tag</th>
                     <th>Detalle</th>
                     <th>Modelo</th>
                     <th>Precio</th>
                     <th>Stock</th>
-                    <th>Descripcion</th>
                     <th>tienda</th>
                     <th>delivery</th>						
                     <th>Imagen</th>
@@ -34,14 +34,11 @@
             <tbody>
                 <tr *ngFor="let producto of productos">
                     <td>{{ producto.productId }}</td>
-                    <td>{{ producto.brandId }}</td>
                     <td>{{ producto.productName }}</td>
-                    <td>{{ producto.tagId }}</td>
                     <td>{{ producto.detail }}</td>                        
                     <td>{{ producto.model }}</td>
                     <td>{{ producto.price }}</td>
                     <td>{{ producto.stock }}</td>
-                    <td>{{ producto.description }}</td>
                     <td>{{ producto.storeAvailable }}</td>
                     <td>{{ producto.deliveryAvailable }}</td>
                     <td><button type="button" [routerLink]="['/productos/detalle', producto.productId]" class="btn btn-success btn-sm">{{ producto.image }}</button></td>

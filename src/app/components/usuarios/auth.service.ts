@@ -89,7 +89,7 @@ export class AuthService {
 
   logout():void{
     this._token = null;
-    this._usuario = null;
+    this._usuario = null; 
     sessionStorage.clear;
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('usuario');

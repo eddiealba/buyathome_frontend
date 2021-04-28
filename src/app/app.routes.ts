@@ -24,6 +24,11 @@ import { ListproductcategoryComponent } from './components/product/listproductca
 import {UsuariosComponent} from './components/usuarios/usuarios.component';
 import {ClientesComponent} from './components/clientes/clientes.component';
 
+import { ProductosComponent} from './productos/productos.component';
+import { FormpComponent } from './productos/formp.component';
+import { FormpeditComponent } from './productos/formpedit.component';
+import { DetalleComponent } from './productos/detalle/detalle.component';
+
 
 const APP_ROUTES: Routes = [
     { path: 'category/catalogue', component: CatalogueComponent },
@@ -51,7 +56,13 @@ const APP_ROUTES: Routes = [
     { path: 'clientes', component: ClientesComponent},
     { path: 'usuarios/formedit', component: FormeditComponent},
     { path: 'usuarios/formedit/:idUsuario', component: FormeditComponent},
-    
+    { path: 'productos/page/:page', component: ProductosComponent},
+    { path: 'productos', component: ProductosComponent},
+    { path: 'productos/formp', component: FormpComponent},
+    { path: 'productos/formpedit', component: FormpeditComponent},
+    { path: 'productos/formpedit/:productId', component: FormpeditComponent},
+    { path: 'productos/detalle/:productId', component: DetalleComponent},
+
     { path: '**', pathMatch: 'full', redirectTo: 'home' }//redirectTo: 'home'
 ];
 

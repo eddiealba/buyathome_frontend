@@ -31,7 +31,7 @@ export class ProductoService{
                 
                 (response.content as Producto[]).map(producto =>{
                     
-                return producto;
+                return producto; 
                 });
                 return response;
             })
