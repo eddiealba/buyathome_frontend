@@ -3,6 +3,7 @@ import {Usuario} from './usuario';
 import { UsuarioService } from './usuario.service';
 import Swal from 'sweetalert2';
 import { AuthService } from './auth.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-usuarios',
@@ -15,11 +16,18 @@ export class UsuariosComponent implements OnInit {
 
     constructor(private usuarioService: UsuarioService, public authService: AuthService) { }
 
-    ngOnInit(): void {
-        this.usuarioService.getUsuarios().subscribe(
-        usuarios => this.usuarios = usuarios
-    );
-    }
+    ngOnInit() {
+        let page = 0;
+        this.usuarioService.getUsuarios(page)
+        .pipe(
+          tap(response => {
+            console.log('UsuariosComponent: tap 3');
+           (response.content as Usuario[]).forEach(usuario =>{
+            console.log(usuario.nombres);
+          });
+        })
+        ).subscribe(response => this.usuarios = response.content as Usuario[]);
+      }
 
     delete(usuario: Usuario): void{
             

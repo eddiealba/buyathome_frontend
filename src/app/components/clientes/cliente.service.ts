@@ -43,15 +43,26 @@ private isNoAutorizado(e: { status: number; }): boolean{
     return false;
 }
 
-  getClientes(): Observable<Cliente[]>{
+  getClientes(page: number): Observable<any>{
     
-    return this.http.get(this.urlEndPoint).pipe(
-      map(response => {
-        
-       let clientes = response as Cliente[];
-        return clientes.map(cliente =>{
+    return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
+      tap((response: any) =>{
+        console.log('ClienteService: tap 1');
+        (response.content as Cliente[]).forEach(cliente =>{
+          console.log(cliente.nombres);
+        });
+      }),
+      map((response:any) => {
+        (response.content as Cliente[]).map(cliente =>{
           //cliente.nombres = cliente.nombres.toString();
           return cliente;
+        });
+        return response;
+      }),
+      tap(response => {
+        console.log('ClienteService: tap 2');
+        (response.content as Cliente[]).forEach(cliente =>{
+          console.log(cliente.nombres);
         });
       })
     );

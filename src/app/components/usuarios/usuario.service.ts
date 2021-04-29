@@ -45,12 +45,30 @@ export class UsuarioService {
         return false;
     }
 
-    getUsuarios(): Observable<Usuario[]>{
-        //return this.http.get<Usuario[]>(this.urlEndPoint);
-        return this.http.get(this.urlEndPoint).pipe(
-        map(response => response as Usuario[])
+    getUsuarios(page: number): Observable<any>{
+    
+        return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
+          tap((response: any) =>{
+            console.log('UsuarioService: tap 1');
+            (response.content as Usuario[]).forEach(usuario =>{
+              console.log(usuario.nombres);
+            });
+          }),
+          map((response:any) => {
+            (response.content as Usuario[]).map(usuario =>{
+              //cliente.nombres = cliente.nombres.toString();
+              return usuario;
+            });
+            return response;
+          }),
+          tap(response => {
+            console.log('UsuarioService: tap 2');
+            (response.content as Usuario[]).forEach(usuario =>{
+              console.log(usuario.nombres);
+            });
+          })
         );
-    }
+      }
 
     create(usuario: Usuario) : Observable<any> {
         return this.http.post<any>(this.urlEndPoint, usuario, {headers: this.agregarAuthorizationHeader()}).pipe(
