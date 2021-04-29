@@ -46,7 +46,14 @@ private isNoAutorizado(e: { status: number; }): boolean{
   getClientes(): Observable<Cliente[]>{
     
     return this.http.get(this.urlEndPoint).pipe(
-      map(response => response as Cliente[])
+      map(response => {
+        
+       let clientes = response as Cliente[];
+        return clientes.map(cliente =>{
+          //cliente.nombres = cliente.nombres.toString();
+          return cliente;
+        });
+      })
     );
   }
 
