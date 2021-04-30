@@ -9,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
     @Input() paginadorp: any;
 
    paginasp!: number[];
-    constructor(){ }
+    constructor(){ }   
 
     ngOnInit(){
       this.paginasp = new Array(this.paginadorp.totalPages).fill(0).map((_valor, indice)=> indice+1);

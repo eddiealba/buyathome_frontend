@@ -4,7 +4,7 @@ import { from } from 'rxjs';
 import { Producto } from './producto';
 
 import { of,Observable, throwError } from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http'; 
+import {HttpClient, HttpEvent, HttpHeaders, HttpRequest} from '@angular/common/http'; 
 import {map, catchError, tap} from 'rxjs/operators';
 import swal from 'sweetalert2';
 
@@ -115,18 +115,23 @@ export class ProductoService{
         );    
     }
 
-    subirFoto(archivo: File, productId:any): Observable<Producto> {
+    subirFoto(archivo: File, productId:any): Observable<HttpEvent<{}>> {
         let formData = new FormData();
-        formData.append("archivo",archivo);
-        formData.append("productId",productId);
-        return this.http.post(`${this.urlEndPoint}/upload/`,formData).pipe(
-            map((response: any)=> response.producto as Producto),
-            catchError(e => {
-                console.error(e.error.mensaje);
-                swal.fire(e.error.mensaje, e.error.error, 'error');
-                return throwError(e);
-            })
-        );
+        formData.append("archivo", archivo);
+        formData.append("productId", productId);
+
+        let httpHeaders = new HttpHeaders();
+        let token =this.authService.token;
+        if (token != null){
+            httpHeaders = httpHeaders.append('Authorization', 'Bearer ' + token);
+        }
+
+        const req = new HttpRequest('POST', `${this.urlEndPoint}/upload`, formData, {
+            reportProgress: true,
+            headers: httpHeaders
+        });
+
+        return this.http.request(req);
     }
     
 

@@ -12,6 +12,7 @@ import { AuthService } from '../components/usuarios/auth.service';
 export class ProductosComponent implements OnInit {
   productos!: Producto[]
   paginadorp: any;
+  productoSeleccionado!: Producto;
 
   constructor(private productoService: ProductoService, public authService: AuthService,
     private activatedRoute: ActivatedRoute) { }
@@ -47,14 +48,18 @@ export class ProductosComponent implements OnInit {
           response => {
             this.productos = this.productos.filter(vou => vou !== producto)
             Swal.fire(
-              'Comprobante Eliminado',
-              `Comprobante ${producto.productName} eliminado con exito.`,
+              'Producto Eliminado',
+              `Producto ${producto.productName} eliminado con exito.`,
               'success'
             )
           }
         )
         
       }
-    })
+    });
+  }
+
+  abrirModal(producto: Producto){
+    this.productoSeleccionado = producto;
   }
 }
