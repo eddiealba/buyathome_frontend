@@ -1,3 +1,4 @@
+import { ModalService } from './detalle/modal.service';
 import { Component, OnInit } from '@angular/core';
 import { Producto } from './producto';
 import { ProductoService } from './producto.service';
@@ -12,9 +13,9 @@ import { AuthService } from '../components/usuarios/auth.service';
 export class ProductosComponent implements OnInit {
   productos!: Producto[]
   paginadorp: any;
-  productoSeleccionado!: Producto;
 
   constructor(private productoService: ProductoService, public authService: AuthService,
+    private modalService: ModalService,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -59,7 +60,5 @@ export class ProductosComponent implements OnInit {
     });
   }
 
-  abrirModal(producto: Producto){
-    this.productoSeleccionado = producto;
-  }
+ 
 }

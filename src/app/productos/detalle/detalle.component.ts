@@ -1,3 +1,4 @@
+import { ModalService } from './modal.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Producto } from '../producto';
@@ -11,13 +12,24 @@ import { HttpEventType } from '@angular/common/http';
   styleUrls: ['./detalle.component.css']
 })
 export class DetalleComponent implements OnInit {
-  @Input() producto!: Producto;
-  private fotoSeleccionada!: File;
+  producto!: Producto;
+  public fotoSeleccionada!: File;
   progreso: number =0;
 
-  constructor(private productoService:ProductoService, private activatedRoute:ActivatedRoute) { }
+  constructor(private productoService:ProductoService, 
+    private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
+    this.activatedRoute.paramMap.subscribe( params => {
+      let productId: number = +params.get('productId');
+
+      if (productId){
+         this.productoService.getProduct(productId).subscribe(producto => {
+        this.producto = producto;
+      });
+    }
+  });
+      
       
   }
   seleccionarFoto(event:any){
@@ -44,9 +56,10 @@ export class DetalleComponent implements OnInit {
         this.producto = response.producto as Producto;
         swal.fire('La imagen se subio', `La imagen del producto: ${this.producto.productName} se subio con exito `, 'success') 
 
-      }
+        }
 
-    });
+      });
+    }
   }
-}
+  
 }

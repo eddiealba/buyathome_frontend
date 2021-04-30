@@ -1,7 +1,5 @@
 <app-navbaradmin></app-navbaradmin>
 
-<detalle-producto *ngIf="productoSeleccionado" [producto] ="productoSeleccionado"></detalle-producto>
-
 <div class="card border-primary mb-3">
     <div class="card-header" >Productos</div>
         <div class="card-body text-primary">
@@ -43,7 +41,10 @@
                     <td>{{ producto.stock }}</td>
                     <td>{{ producto.storeAvailable }}</td>
                     <td>{{ producto.deliveryAvailable }}</td>
-                    <td><button type="button" (click)="abrirModal(producto)" class="btn btn-success btn-sm">{{ producto.image }}</button></td>
+                    <td><img [routerLink]="['/productos/detalle', producto.productId]" *ngIf="producto?.image" src="http://localhost:8080/api/uploads/img/{{producto.image}}" alt="{{producto.productName}}" class="img-thumbnail rounded" style="width: 64px; cursor: pointer;">
+                        
+                        <img [routerLink]="['/productos/detalle', producto.productId]" *ngIf="!producto?.image" src="http://localhost:8080/static/images/noproduct.jpg" alt="Sin foto" class="img-thumbnail rounded" style="width: 64px; cursor: pointer;">
+                    </td>
                     <td *ngIf="authService.hasRole('ROLE_ADMINISTRADOR') || authService.hasRole('ROLE_VENTAS')">
                         <button type="button" name="editar" [routerLink]="['/productos/formpedit', producto.productId]" class="btn btn-primary btn-sm" >editar</button>
                     </td>
