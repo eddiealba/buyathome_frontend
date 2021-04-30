@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
     selector: 'paginator-nav',
-    templateUrl: './paginatorp.component.html'
+    templateUrl: './paginator.component.html'
     
   })
   export class PaginatorComponent implements OnInit {

@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {Usuario} from './usuario';
 import { UsuarioService } from './usuario.service';
@@ -13,20 +14,31 @@ import { tap } from 'rxjs/operators';
 export class UsuariosComponent implements OnInit {
 
     usuarios!: Usuario[];
+    paginadoru:any;
 
-    constructor(private usuarioService: UsuarioService, public authService: AuthService) { }
+    constructor(private usuarioService: UsuarioService, public authService: AuthService, private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
-        let page = 0;
-        this.usuarioService.getUsuarios(page)
-        .pipe(
-          tap(response => {
-            console.log('UsuariosComponent: tap 3');
-           (response.content as Usuario[]).forEach(usuario =>{
-            console.log(usuario.nombres);
+        
+        this.activatedRoute.paramMap.subscribe( params => {
+          let page: number = +params.get('page');
+
+          if (!page){
+            page =0;
+          }
+          this.usuarioService.getUsuarios(page)
+          .pipe(
+            tap(response => {
+              console.log('UsuariosComponent: tap 3');
+            (response.content as Usuario[]).forEach(usuario =>{
+              console.log(usuario.nombres);
+            });
+          })
+          ).subscribe(response => {
+            this.usuarios = response.content as Usuario[];
+            this.paginadoru = response;
           });
-        })
-        ).subscribe(response => this.usuarios = response.content as Usuario[]);
+        });
       }
 
     delete(usuario: Usuario): void{

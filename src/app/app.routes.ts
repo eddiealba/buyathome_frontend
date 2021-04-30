@@ -62,6 +62,8 @@ const APP_ROUTES: Routes = [
     { path: 'productos/formpedit', component: FormpeditComponent},
     { path: 'productos/formpedit/:productId', component: FormpeditComponent},
     { path: 'productos/detalle/:productId', component: DetalleComponent},
+    { path: 'usuarios/page/:page', component: UsuariosComponent},
+    { path: 'clientes/page/:page', component: ClientesComponent},
 
     { path: '**', pathMatch: 'full', redirectTo: 'home' }//redirectTo: 'home'
 ];

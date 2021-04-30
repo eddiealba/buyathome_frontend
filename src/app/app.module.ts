@@ -65,6 +65,9 @@ import { FormpComponent } from './productos/formp.component';
 import { FormpeditComponent } from './productos/formpedit.component';
 import { DetalleComponent } from './productos/detalle/detalle.component';
 import {PaginatorpComponent} from './components/paginator/paginatorp.component';
+import { PaginatoruComponent } from './components/paginator/paginatoru.component';
+import {PaginatorComponent} from './components/paginator/paginator.component';
+
 
 @NgModule({
   declarations: [
@@ -106,7 +109,9 @@ import {PaginatorpComponent} from './components/paginator/paginatorp.component';
     FormpeditComponent,
     PaginatorpComponent,
     ProductosComponent,
-    DetalleComponent
+    DetalleComponent,
+    PaginatoruComponent,
+    PaginatorComponent
     ],
   imports: [
     BrowserModule,

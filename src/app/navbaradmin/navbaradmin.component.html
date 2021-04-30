@@ -12,7 +12,7 @@
                     </svg>
                 </a>
             </li>
-            <li class="nav-item" routerLinkActive="active" >
+            <li class="nav-item" routerLinkActive="active" *ngIf="authService.hasRole('ROLE_ADMINISTRADOR')" >
                 <a class="nav-link"  [routerLink]="['/usuarios']">
                     Usuarios
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-shop-window" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

@@ -3,6 +3,7 @@ import { Producto } from './producto';
 import { ProductoService } from './producto.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute} from '@angular/router';
+import { AuthService } from '../components/usuarios/auth.service';
 
 @Component({
   selector: 'app-productos',
@@ -12,12 +13,12 @@ export class ProductosComponent implements OnInit {
   productos!: Producto[]
   paginadorp: any;
 
-  constructor(private productoService: ProductoService, 
+  constructor(private productoService: ProductoService, public authService: AuthService,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe (params =>{
-      let page: number = +params.get('page');  
+      let page: number = +params.get('page');   
       if(!page){
         page=0;
       }

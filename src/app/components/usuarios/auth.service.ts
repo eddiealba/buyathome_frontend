@@ -8,8 +8,8 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  private _usuario: Usuario;
-  private _token: string;
+  private _usuario: Usuario | undefined;
+  private _token: string | undefined;
 
   constructor(private http: HttpClient) { }
 
