@@ -61,14 +61,19 @@
             <div class="form-group row">
                 <label for="storeAvailable" class="col-form-label col-sm-2">Disponible en tienda</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="producto.storeAvailable" name="storeAvailable">
-                </div>
+                    <select type="text" class="form-control" [(ngModel)]="producto.storeAvailable" name="storeAvailable">
+                        <option value=1>Disponible</option>
+                        <option value=0>No disponible</option>
+                    </select>                </div>
             </div>
 
             <div class="form-group row">
                 <label for="deliveryAvailable" class="col-form-label col-sm-2">Disponible para delivery</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" [(ngModel)]="producto.deliveryAvailable" name="deliveryAvailable">
+                    <select type="text" class="form-control" [(ngModel)]="producto.deliveryAvailable" name="storeAvailable">
+                        <option value=1>Disponible</option>
+                        <option value=0>No disponible</option>
+                    </select>
                 </div>
             </div>
 

@@ -21,7 +21,7 @@ export class DetalleComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe( params => {
-      let productId: number = +params.get('productId');
+      let productId: number = +params.get('productId'); 
 
       if (productId){
          this.productoService.getProduct(productId).subscribe(producto => {

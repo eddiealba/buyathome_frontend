@@ -17,27 +17,20 @@
             </div>
           </div>
 
-          <div class="form-group row">
-            <label for="password" class="col-form-label col-sm-2">password</label>
-            <div class="col-sm-6">
-              <input type="text" class="form-control" [(ngModel)]="usuario.password" name="password" ngModel #password="ngModel"
-              [class.is-invalid]="password.invalid && password.touched"
-              minlength="8"
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              required >
-              <small class="form-text text-danger" *ngIf="password.invalid && password.touched">La contraseña debe tener un minimo de 8 caracteres, un numero, una mayuscula </small>
           
-            </div>
-          </div>
     
           <div class="form-group row">
             <label for="estado" class="col-form-label col-sm-2">estado</label>
             <div class="col-sm-6">
-              <input type="text" class="form-control" [(ngModel)]="usuario.estado" name="estado" required #estado="ngModel"ngModel 
+              <select type="text" class="form-control" [(ngModel)]="usuario.estado" name="estado" required #estado="ngModel"ngModel 
               [class.is-invalid]="estado.invalid && estado.touched"
               minlength="1"
               pattern=".*\S+.*"
               required >
+                <option value="true">habilitado</option>
+                <option value="false">deshabilitado</option>
+
+              </select>
           <small class="form-text text-danger" *ngIf="estado.invalid && estado.touched">El campo es obligatorio</small>
         </div>
           </div>

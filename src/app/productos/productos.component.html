@@ -39,8 +39,11 @@
                     <td>{{ producto.model }}</td>
                     <td>{{ producto.price }}</td>
                     <td>{{ producto.stock }}</td>
-                    <td>{{ producto.storeAvailable }}</td>
-                    <td>{{ producto.deliveryAvailable }}</td>
+                    <td *ngIf="producto.storeAvailable==1">Disponible</td>
+                    <td *ngIf="producto.storeAvailable==0">No disponible</td>
+
+                    <td *ngIf="producto.deliveryAvailable==1">Disponible</td>
+                    <td *ngIf="producto.deliveryAvailable==0">No disponible</td>
                     <td><img [routerLink]="['/productos/detalle', producto.productId]" *ngIf="producto?.image" src="http://localhost:8080/api/uploads/img/{{producto.image}}" alt="{{producto.productName}}" class="img-thumbnail rounded" style="width: 64px; cursor: pointer;">
                         
                         <img [routerLink]="['/productos/detalle', producto.productId]" *ngIf="!producto?.image" src="http://localhost:8080/static/images/noproduct.jpg" alt="Sin foto" class="img-thumbnail rounded" style="width: 64px; cursor: pointer;">

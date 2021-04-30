@@ -33,7 +33,8 @@
             <tr *ngFor="let usuario of usuarios">
                 <td>{{ usuario.idUsuario }}</td>
                 <td>{{ usuario.username }}</td>
-                <td>{{ usuario.estado }}</td>
+                <td *ngIf="usuario.estado==1">Habilitado</td>
+                <td *ngIf="usuario.estado==0">Deshabilitado</td>
                 <td>{{ usuario.nombres }}</td>
                 <td>{{ usuario.apellidos }}</td>
                 <td>{{ usuario.email}}</td>
